@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System.IO;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -56,6 +57,8 @@ namespace FacturadorAPI.Controllers
                 var archivoLog = Path.Combine(pathLogs, "log.txt");
 
                 System.IO.File.AppendAllText(archivoLog, $"=== SP1 ejecutado , fecha : {hoy} , registros devueltos : {registrosDevueltos} ===\n ");
+
+                Log.Information("SP1 : fecha {@hoy} , registros devueltos: {@registrosDevueltos}", hoy, registrosDevueltos);
             }
         }
 
@@ -96,6 +99,8 @@ namespace FacturadorAPI.Controllers
                 var archivoLog = Path.Combine(pathLogs, "log.txt");
 
                 System.IO.File.AppendAllText(archivoLog, $"=== SP2 ejecutado , fecha : {hoy} , registros devueltos : {registrosDevueltos} ===\n");
+                
+                Log.Information("SP1 : fecha {@hoy} , registros devueltos: {@registrosDevueltos}", hoy, registrosDevueltos);
             }
         }
 

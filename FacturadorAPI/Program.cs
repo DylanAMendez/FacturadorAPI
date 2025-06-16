@@ -1,6 +1,7 @@
 
 using FacturadorAPI.Services;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 namespace FacturadorAPI
 {
@@ -25,6 +26,8 @@ namespace FacturadorAPI
             builder.Services.AddScoped<Factura_CabeceraService>();
             builder.Services.AddScoped<Factura_DetalleService>();
             builder.Services.AddScoped<ArticuloService>();
+
+            Log.Logger = new LoggerConfiguration().MinimumLevel.Debug().WriteTo.Console().CreateLogger();
 
             var app = builder.Build();
 

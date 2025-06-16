@@ -1,6 +1,7 @@
 ﻿using FacturadorAPI.Modelos;
 using FacturadorAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace FacturadorAPI.Controllers
 {
@@ -18,30 +19,38 @@ namespace FacturadorAPI.Controllers
         [HttpGet("GetAllClientes")]
         public List<Cliente> GetAllClientes()
         {
-            return _clienteService.GetAllClientes();
+            var lsAllClientes = _clienteService.GetAllClientes();
+
+            Log.Information("GetAllClientes : {@lsAllClientes}", lsAllClientes);
+
+            return lsAllClientes;
         }
 
         [HttpPost("AddCliente")]
         public string AddCliente([FromBody] Cliente cliente)
         {
+            Log.Information("AddCliente : {@cliente}", cliente);
             return _clienteService.AddCliente(cliente);
         }
 
         [HttpPut("{IDActualizar}")]
         public string ActualizarCliente([FromBody] Cliente cliente)
         {
+            Log.Information("ActualizarCliente : {@cliente}", cliente);
             return _clienteService.ActualizarDatosCliente(cliente);
         }
 
         [HttpDelete("{ClienteIDAEliminar}")]
         public string EliminarCliente(int ClienteIDAEliminar)
         {
+            Log.Information("EliminarCliente : {@ClienteIDAEliminar}", ClienteIDAEliminar);
             return _clienteService.EliminarCliente(ClienteIDAEliminar);
         }
 
         [HttpGet("GetClienteByID/{IDABuscar}")]
         public Cliente GetClienteByID(int IDABuscar)
         {
+            Log.Information("GetClienteByID : {@IDABuscar}", IDABuscar);
             return _clienteService.GetClienteByID(IDABuscar);
         }
 
