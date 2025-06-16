@@ -17,7 +17,9 @@ namespace FacturadorAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer("Server=localhost;Database=FacturadorDB;Trusted_Connection=True;TrustServerCertificate=True;"));
+            var connectionString = builder.Configuration.GetConnectionString("FacturadorDB");
+
+            builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
 
             builder.Services.AddScoped<ClienteService>();
             builder.Services.AddScoped<Factura_CabeceraService>();
