@@ -1,5 +1,6 @@
 ﻿using FacturadorAPI.Modelos;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace FacturadorAPI.Services
 {
@@ -20,6 +21,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetAllFacturaDetalle : {@ex}", ex.Message);
                 return new List<Factura_Detalle>();
             }
         }
@@ -52,6 +54,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("AddFacturaDetalle : {@ex}", ex.Message);
                 return "Error al agregar factura detalle" + ex.Message;
             }
         }
@@ -76,6 +79,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("ActualizarFacturaDetalle : {@ex}", ex.Message);
                 return "Error al actualizar : " + ex.Message;
             }
 
@@ -96,6 +100,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("EliminarFacturaDetalle : {@ex}", ex.Message);
                 return "Error al eliminar ID : " + IDAEliminar;
             }
         }
@@ -113,6 +118,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetFacturaDetalleByID : {@ex}", ex.Message);
                 return new Factura_Detalle();
             }
         }

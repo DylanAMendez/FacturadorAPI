@@ -1,4 +1,5 @@
 ﻿using FacturadorAPI.Modelos;
+using Serilog;
 
 namespace FacturadorAPI.Services
 {
@@ -20,6 +21,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetAllArticulos : {@ex}", ex.Message);
                 return new List<Articulo>();
             }
         }
@@ -37,6 +39,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetArticuloByID : {@ex}", ex.Message);
                 return new Articulo();
             }
         }
@@ -57,6 +60,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("AddArticulo : {@ex}", ex.Message);
                 return "Error al agregar articulo" + ex.Message;
             }
         }
@@ -88,6 +92,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("ActualizarArticulo : {@ex}", ex.Message);
                 return "Error al actualizar articulo con ID : " + articuloActualizar.ART_ID;
             }
         }
@@ -108,6 +113,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("EliminarArticulo : {@ex}", ex.Message);
                 return "Error al eliminar articulo con ID : " + IDAEliminar + " " + ex.Message;
             }
         }

@@ -1,5 +1,6 @@
 ﻿using FacturadorAPI.Modelos;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using System.Net.WebSockets;
 
 namespace FacturadorAPI.Services
@@ -21,6 +22,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetAllClientes : {@ex}", ex.Message);
                 return new List<Cliente>();
             }
         }
@@ -42,6 +44,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("AddCliente : {@ex}", ex.Message);
                 return "Error al agregar cliente: " + ex.Message;
             }
         }
@@ -65,6 +68,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("ActualizarDatosCliente : {@ex}", ex.Message);
                 return "Error al actualizar cliente : " + ex.Message;
             }
         }
@@ -84,6 +88,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("EliminarCliente : {@ex}", ex.Message);
                 return "Error al eliminar cliente : " + ex.Message;
             }
         }
@@ -100,6 +105,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetClienteByID : {@ex}", ex.Message);
                 return new Cliente();
             }
         }

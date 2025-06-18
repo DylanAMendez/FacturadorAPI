@@ -1,4 +1,5 @@
 ﻿using FacturadorAPI.Modelos;
+using Serilog;
 
 namespace FacturadorAPI.Services
 {
@@ -19,6 +20,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetAllFacturaCabecera : {@ex}", ex.Message);
                 return new List<Factura_Cabecera>();
             }
         }
@@ -39,8 +41,8 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("AddFacturaCabecera : {@ex}", ex.Message);
                 return "Error al agregar factura cabecera " + ex.Message;
-                throw;
             }
         }
 
@@ -62,6 +64,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("ActualizarFacturaCabecera : {@ex}", ex.Message);
                 return "Error al actualizar factura cabecera : " + ex.Message;
             }
         }
@@ -81,6 +84,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("EliminarFacturaCabecera : {@ex}", ex.Message);
                 return "Error al eliminar factura cabecera : " + ex.Message;
             }
         }
@@ -98,6 +102,7 @@ namespace FacturadorAPI.Services
             }
             catch (Exception ex)
             {
+                Log.Error("GetFacturaCabeceraByID : {@ex}", ex.Message);
                 return new Factura_Cabecera();
             }
         }
